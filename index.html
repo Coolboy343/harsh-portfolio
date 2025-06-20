@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh Kulkarni | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <nav>
+      <div class="logo">Harsh</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Floating Icons -->
+  <div class="floating-icons left" data-aos="fade-right">
+    <span style="transform: rotate(-10deg);">💡</span>
+    <span style="transform: rotate(8deg);">🛠️</span>
+    <span style="transform: rotate(-6deg);">📘</span>
+    <span style="transform: rotate(5deg);">🔍</span>
+  </div>
+
+  <div class="floating-icons right" data-aos="fade-left">
+    <span style="transform: rotate(12deg);">🚀</span>
+    <span style="transform: rotate(-10deg);">💻</span>
+    <span style="transform: rotate(6deg);">🧠</span>
+    <span style="transform: rotate(-4deg);">🎯</span>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <img src="assets/avatar.png" alt="Avatar" class="avatar" />
+      <h1>Hello, I'm Harsh Kulkarni</h1>
+      <p>I create clean, responsive, and elegant websites.</p>
+      <a href="assets/Harsh_Kulkarni_Resume.pdf" download class="resume-button" data-aos="zoom-in">
+        Download Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>
+      I'm a Computer Science student passionate about web development and problem-solving.
+      I love building interactive, accessible, and responsive websites with clean UI.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Python</li>
+      <li>C++</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="projects-container">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <h3>Project 1</h3>
+        <p>A responsive portfolio website built with HTML, CSS and AOS animations.</p>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Project 2</h3>
+        <p>Simple task tracker app using JavaScript and localStorage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Harsh Kulkarni</p>
+  </footer>
+
+  <!-- AOS & Cursor Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: true
+    });
+
+    // Progress Bar Logic
+    window.addEventListener("scroll", () => {
+      const progressBar = document.getElementById("progressBar");
+      const scrollTop = document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = scrollPercent + "%";
+    });
+
+    // Smooth Cursor
+    const dot = document.getElementById("cursorDot");
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      dotX += (mouseX - dotX) * 0.2;
+      dotY += (mouseY - dotY) * 0.2;
+      dot.style.left = dotX + "px";
+      dot.style.top = dotY + "px";
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Avatar Parallax
+    const avatar = document.querySelector('.avatar');
+    window.addEventListener('scroll', () => {
+      const scroll = window.scrollY;
+      avatar.style.transform = `translateY(${scroll * 0.1}px)`;
+    });
+  </script>
+</body>
+</html>
